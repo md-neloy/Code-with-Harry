@@ -4,8 +4,8 @@ export default function From(props) {
   function capitalize(text) {
     const word = text.split(" ");
     if (word.length > 1) {
-      const capitalizeword = word.map(word=>
-        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+      const capitalizeword = word.map(
+        (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
       );
       return capitalizeword.join(" ");
     } else {
@@ -27,7 +27,7 @@ export default function From(props) {
     let uptext = capitalize(text);
     setText(uptext);
   };
-  
+
   const onchange = (event) => {
     console.log("upper click button");
     setText(event.target.value);
@@ -38,10 +38,13 @@ export default function From(props) {
         <div className="container">
           <div className="mb-3">
             <label htmlFor="exampleFormControlTextarea1" className="form-label">
-              <h2>{props.heading}</h2>
+              <h2 style={{ color: props.mode === "light" ? "black" : "white" }}>
+                {props.heading}
+              </h2>
             </label>
             <textarea
               className="form-control"
+              style={{ background: props.mode === "light" ? "white" : "#ddd" }}
               id="exampleFormControlTextarea1"
               value={text}
               onChange={onchange}
@@ -60,10 +63,21 @@ export default function From(props) {
               Capitalize button
             </button>
           </div>
-          <h3 className="my-2">your text summary</h3>
-          <p>{text.split(" ").length} word {text.length} letter</p>
-          <h3>Total time to read this text </h3>
-          <p>{ 0.008 * text.split(" ").length} minutes</p>
+          <h3
+            className="my-2"
+            style={{ color: props.mode === "light" ? "black" : "white" }}
+          >
+            your text summary
+          </h3>
+          <p style={{ color: props.mode === "light"? 'black':'white' }}>
+            {text.split(" ").length} word {text.length} letter
+          </p>
+          <h3 style={{ color: props.mode === "light"? 'black':'white' }}>
+            Total time to read this text{" "}
+          </h3>
+          <p style={{ color: props.mode === "light"? 'black':'white' }}>
+            {0.008 * text.split(" ").length} minutes
+          </p>
         </div>
       </section>
     </>

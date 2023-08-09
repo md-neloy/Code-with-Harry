@@ -12,9 +12,9 @@ export default function About() {
     const changer = () => {
         if (mystyle.color === "black") {
             setMyStyle({
-                color: "white",
-                background:"black"
-            })
+              color: "white",
+              background: "#222426",
+            });
             setButtonText("Enable normal mode")
         }
         else {
