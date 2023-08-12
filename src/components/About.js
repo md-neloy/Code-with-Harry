@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 export default function About(props) {
   // const normalStyle = {
@@ -12,12 +12,12 @@ export default function About(props) {
   });
   const [buttontext, setButtonText] = useState("Enable dark mode");
   const changer = () => {
-    if ((props.mode === "white" && mystyle.background === "white") || mystyle.background ==="white") {
+    if (props.mode === "white" || mystyle.background === "white") {
       setMyStyle({
         color: "black",
         background: "#032743",
       });
-      console.log("1");
+
       setButtonText("Enable normal mode");
     } else {
       setMyStyle({
@@ -25,7 +25,7 @@ export default function About(props) {
         background: "white",
       });
       setButtonText("Enable dark mode");
-      console.log("2");
+      
     }
   };
   useEffect(() => {

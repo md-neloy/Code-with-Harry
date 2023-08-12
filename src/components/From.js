@@ -17,10 +17,13 @@ export default function From(props) {
     console.log(text);
     let newtext = text.toUpperCase();
     setText(newtext);
+
+    props.showAlert("converted to uppercase", "success");
   };
   const handleLowclick = () => {
     let newtext = text.toLowerCase();
     setText(newtext);
+    props.showAlert("converted to LOWER", "success");
   };
   const handleCapiclick = () => {
     console.log(text);
@@ -28,6 +31,11 @@ export default function From(props) {
     setText(uptext);
   };
 
+  const handleCopyclick = () => {
+    var copy = document.getElementById("mybox");
+    copy.select();
+    navigator.clipboard.writeText(copy.value);
+  }
   const onchange = (event) => {
     console.log("upper click button");
     setText(event.target.value);
@@ -45,7 +53,7 @@ export default function From(props) {
             <textarea
               className="form-control"
               style={{ background: props.mode === "white" ? "white" : "#ddd" }}
-              id="exampleFormControlTextarea1"
+              id="mybox"
               value={text}
               onChange={onchange}
               placeholder="write your text here"
@@ -61,6 +69,9 @@ export default function From(props) {
             </button>
             <button className="btn btn-primary" onClick={handleCapiclick}>
               Capitalize button
+            </button>
+            <button className="btn btn-primary" onClick={handleCopyclick}>
+              Copy button
             </button>
           </div>
           <h3
