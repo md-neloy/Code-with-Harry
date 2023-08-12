@@ -3,7 +3,8 @@ import React from "react";
 const Navbar = (props) => {
   return (
     <nav
-      className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+      className={`navbar navbar-expand-lg`}
+      style={{background:props.mode}}
     >
       <div className="container">
         <a className="navbar-brand" href="/">

@@ -1,32 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 
-export default function About() {
+export default function About(props) {
   // const normalStyle = {
   //     margin:"100px 0"
   // }
+
+  console.log(props.mode);
   const [mystyle, setMyStyle] = useState({
-    color: "black",
-    background: "white",
+    color: "black ",
+    background: props.mode,
   });
-    const [buttontext, setButtonText] = useState("Enable dark mode")
-    const changer = () => {
-        if (mystyle.color === "black") {
-            setMyStyle({
-              color: "white",
-              background: "#222426",
-            });
-            setButtonText("Enable normal mode")
-        }
-        else {
-            setMyStyle({
-                color: "black",
-                background:"white"
-            })
-            setButtonText("Enable dark mode")
-        }
+  const [buttontext, setButtonText] = useState("Enable dark mode");
+  const changer = () => {
+    if ((props.mode === "white" && mystyle.background === "white") || mystyle.background ==="white") {
+      setMyStyle({
+        color: "black",
+        background: "#032743",
+      });
+      console.log("1");
+      setButtonText("Enable normal mode");
+    } else {
+      setMyStyle({
+        color: "black",
+        background: "white",
+      });
+      setButtonText("Enable dark mode");
+      console.log("2");
+    }
   };
+  useEffect(() => {
+    // Update section background color when mystyle changes
+    const sectionElement = document.getElementsByTagName("section")[1];
+    sectionElement.style.backgroundColor = props.modes;
+  }, [props.modes]);
   return (
-    <section style={{ ...mystyle, padding: "100px 0" }}>
+    <section
+      id="name"
+      style={{
+        ...mystyle,
+        padding: "100px 0",
+      }}
+    >
       <div className="container">
         <div className="accordion" id="accordionExample">
           <div className="accordion-item">
@@ -127,7 +141,7 @@ export default function About() {
           </div>
         </div>
         <button className="btn btn-primary my-2" onClick={changer}>
-        {buttontext}
+          {buttontext}
         </button>
       </div>
     </section>

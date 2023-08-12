@@ -44,7 +44,7 @@ export default function From(props) {
             </label>
             <textarea
               className="form-control"
-              style={{ background: props.mode === "light" ? "white" : "#ddd" }}
+              style={{ background: props.mode === "white" ? "white" : "#ddd" }}
               id="exampleFormControlTextarea1"
               value={text}
               onChange={onchange}
