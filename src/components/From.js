@@ -40,6 +40,14 @@ export default function From(props) {
     console.log("upper click button");
     setText(event.target.value);
   };
+  const lengthOfText = () => {
+    const num = text.length;
+    if (num === 0) {
+      return 0;
+    } else {
+      return text.split(" ").length;
+    }
+  }
   return (
     <>
       <section>
@@ -76,17 +84,17 @@ export default function From(props) {
           </div>
           <h3
             className="my-2"
-            style={{ color: props.mode === "light" ? "black" : "white" }}
+            style={{ color: props.mode === "white" ? "black" : "white" }}
           >
             your text summary
           </h3>
-          <p style={{ color: props.mode === "light"? 'black':'white' }}>
-            {text.split(" ").length} word {text.length} letter
+          <p style={{ color: props.mode === "white" ? "black" : "white" }}>
+            {lengthOfText()} word {text.length} letter
           </p>
-          <h3 style={{ color: props.mode === "light"? 'black':'white' }}>
+          <h3 style={{ color: props.mode === "white" ? "black" : "white" }}>
             Total time to read this text{" "}
           </h3>
-          <p style={{ color: props.mode === "light"? 'black':'white' }}>
+          <p style={{ color: props.mode === "white" ? "black" : "white" }}>
             {0.008 * text.split(" ").length} minutes
           </p>
         </div>
