@@ -1,11 +1,24 @@
-import React from "react";
+
+import React ,{useState} from "react";
 
 const Navbar = (props) => {
+  const [selectedColor, setSelectedColor] = useState("white");
+  const [bodyback, setBodyBack] = useState({
+    background: selectedColor,
+  });
+  const modechanger = () => {
+    if (document.getElementById("flexSwitchCheckDefaults").checked) {
+      setBodyBack(selectedColor);
+    }
+  }
+  const selectColor = (color) => {
+    setSelectedColor(color);
+    if (document.getElementById("flexSwitchCheckDefaults").checked) {
+      setBodyBack(color);
+    }
+  }
   return (
-    <nav
-      className={`navbar navbar-expand-lg`}
-      style={{background:props.mode}}
-    >
+    <nav className={`navbar navbar-expand-lg`} style={{ background: bodyback }}>
       <div className="container">
         <a className="navbar-brand" href="/">
           Navbar
@@ -89,7 +102,11 @@ const Navbar = (props) => {
           </form>
         </div>
       </div>
-      <div className={`form-check form-switch mx-3 text-${props.mode === 'light'? 'black':'white'}`}>
+      <div
+        className={`form-check form-switch mx-3 text-${
+          props.mode === "white" ? "black" : "white"
+        }`}
+      >
         <input
           className="form-check-input"
           type="checkbox"
@@ -99,6 +116,29 @@ const Navbar = (props) => {
         <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
           Enable dark mode
         </label>
+      </div>
+      <div
+        className={`form-check form-switch mx-3 text-${
+          props.mode === "white" ? "black" : "white"
+        }`}
+      >
+        <input
+          className="form-check-input"
+          type="checkbox"
+          id="flexSwitchCheckDefaults"
+          onClick={modechanger}
+        />
+        <select
+          id="theme"
+          onChange={(e) => selectColor(e.target.value)}
+          value={selectedColor}
+        >
+          <option value="white">white</option>
+          <option value="#1A2832">dark</option>
+          <option value="#FA4442">red</option>
+          <option value="#37649B">blue</option>
+          <option value="#36BB5A">green</option>
+        </select>
       </div>
     </nav>
   );

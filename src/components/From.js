@@ -41,7 +41,8 @@ export default function From(props) {
     setText(event.target.value);
   };
   const lengthOfText = () => {
-    if (text === null || text.trim() === ("")) {
+    const num = text.length;
+    if (num === 0 ) {
       return 0;
     } else {
       return text.split(" ").length;

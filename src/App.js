@@ -32,15 +32,17 @@ function App() {
       showAlert("light mode has been enabled", "success");
     }
   }
+
+ 
   //  useEffect(() => {
   //    // Update section background color when mystyle changes
   //    document.body.style.backgroundColor = bg.background;
   //  }, [bg]);
     return (
       <>
-        <Navbar mode={bg} togglemode ={toggle} />
-        <Alert alert={ alert} /> 
-        <From showAlert = {showAlert} heading="analyzed the text" mode={bg} />
+        <Navbar mode={bg} togglemode={toggle}  />
+        <Alert alert={alert} />
+        <From showAlert={showAlert} heading="analyzed the text" mode={bg} />
         <About modes={back} />
       </>
     );
